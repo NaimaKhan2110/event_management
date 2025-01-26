@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">{{ view.title }}</h1>
+
+<!-- Form -->
+<form method="post" class="bg-white p-6 shadow-md rounded border border-gray-300">
+    {% csrf_token %}
+    
+    <!-- Display Form Fields -->
+    <div class="mb-4">
+        {{ form.as_p }}
+    </div>
+
+    <!-- Error Handling (optional) -->
+    {% if form.errors %}
+        <div class="text-red-500 mb-4">
+            <p>Please fix the errors below:</p>
+            <ul>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    
+    <!-- Submit Button -->
+    <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600 focus:outline-none">
+        Submit
+    </button>
+</form>
+{% endblock %}

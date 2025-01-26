@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-500 p-4">
+        <a href="/" class="text-white font-semibold">Home</a>
+        <a href="/dashboard/" class="text-white font-semibold ml-4">Dashboard</a>
+        <a href="/categories/" class="text-white font-semibold ml-4">Categories</a>
+        <a href="/event/new/" class="text-white font-semibold ml-4">Add Event</a>
+        <a href="/participants/" class="text-white font-semibold ml-4">Participants</a> <!-- New Participant Link -->
+        <form method="GET" action="{% url 'search-events' %}" class="inline-block ml-4">
+            <input
+                type="text"
+                name="q"
+                placeholder="Search events..."
+                class="px-2 py-1 rounded"
+            />
+            <button type="submit" class="bg-gray-700 text-white px-3 py-1 rounded">
+                Search
+            </button>
+        </form>
+    </nav>
+    <div class="container mx-auto mt-6">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
